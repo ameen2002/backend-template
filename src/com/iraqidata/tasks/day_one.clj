@@ -4,7 +4,8 @@
 ;; 1. Write a function that takes one argument as input and prints that
 ;; argument.
 
-
+(defn printarg [arg]
+  (println arg))
 
 
 
@@ -14,9 +15,10 @@
 
 ;; Tip, use the `odd?` function to check if a number is odd.
 
-
-
-
+(defn add-if-odd [n]
+  (if (odd? n)
+    (+ n 1)
+    :error))
 
 
 
@@ -26,7 +28,9 @@
 ;; Example run
 ;; (function-name "Ali" 2001 2024) => {:name "Ali", :age 23}
 
-
+(defn person-info [name year-of-birth, current-year]
+  {:name name
+   :age  (- current-year year-of-birth)})
 
 
 
@@ -38,6 +42,8 @@
 ;; (function-name "Ali" 2001 2024) => true
 ;; (function-name {:name "Abbas", :age 17}) => false
 
+(defn can-vote [person]
+  (>= (:age person) 18))
 
 
 
@@ -48,3 +54,8 @@
 ;; (function-name "Ali" 2001) => {:name "Ali", :age 23}
 ;; If ran in 2025
 ;; (function-name "Ali" 2001) => {:name "Ali", :age 24}
+(defn person-info-without-current [name year-of-birth]
+  {:name name
+   :age  (- (.getValue (java.time.Year/now)) year-of-birth)})
+
+ (person-info-without-current "Ali" 2001)
