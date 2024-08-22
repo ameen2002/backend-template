@@ -6,6 +6,9 @@
    [tablecloth.column.api :as tcc]
    tech.v3.datatype.casting))
 
+;; Namespace does not match the file.  You did not checkout the proper branch
+;; and thus do not have the data to load, thus nothing evaluates.
+
 (def ds (tc/dataset "./resources/data/flights.csv" {:key-fn #(keyword (str/replace (name %) "_" "-"))}))
 
 ;; 1. How many flights were there in total?
@@ -47,9 +50,6 @@
 
 
 
-
-
-
 ;; Optional: Use the `airlines` dataset to get the name of the carrier with the
 ;; highest average distance.
 
@@ -62,9 +62,3 @@
     (tc/aggregate {:avg-distance (fn [x] (tc/mean x :distance))})
     (tc/order-by :avg-distance-summary :desc)
     (tc/first))
-
-
-
-
-
-
